@@ -12,9 +12,9 @@
         <md-icon>account_circle</md-icon>
         <span class="md-list-item-text">My Profile</span>
       </md-list-item>
-      <md-list-item to="/people" @click="hideDrawer">
+      <md-list-item to="/artists" @click="hideDrawer">
         <md-icon>people</md-icon>
-        <span class="md-list-item-text">People</span>
+        <span class="md-list-item-text">Artists</span>
       </md-list-item>
       <md-list-item to="/artworks" @click="hideDrawer">
         <md-icon>portrait</md-icon>

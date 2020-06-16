@@ -1,7 +1,7 @@
 ----------------------------Template----------------------------------------------
 <template>
   <md-app class="md-waterfall">
-    <md-app-toolbar class="md-large md-primary">
+    <md-app-toolbar class="md-small md-primary md-dense">
       <apptitlebar :user="user" />
       <appnavbar v-if="! this.$isMobile()"/>
     </md-app-toolbar>
@@ -10,10 +10,9 @@
     </md-app-drawer>
     <md-app-content>
       <appcontent />
-
-      <appbottombar v-if="this.$isMobile()"></appbottombar>
     </md-app-content>
   </md-app>
+
 </template>
 ----------------------------Style----------------------------------------------
 <script>
@@ -23,7 +22,6 @@ import appcontent from "./components/AppContent.vue";
 import appnavbar from "./components/AppNavBar.vue";
 import apptitlebar from "./components/AppTitleBar.vue";
 import appnavdrawer from "./components/AppNavDrawer.vue";
-import appbottombar from "./components/AppBottomBar.vue";
 import Store from "./store";
 
 //
@@ -50,7 +48,6 @@ export default {
     }
   },
   components: {
-    appbottombar,
     appcontent,
     apptitlebar,
     appnavbar,

@@ -7,7 +7,7 @@
       <md-divider />
       <md-card-content>
         <p>
-          Apartment House is made by the Beyond the Desktop: Team 13
+          Artamica is a website about arta mica ;)
         </p>
       </md-card-content>
     </md-card>
