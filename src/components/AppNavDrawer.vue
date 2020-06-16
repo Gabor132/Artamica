@@ -34,13 +34,7 @@
 --------------------------------------------------------------------------------
 <script>
 //
-// Setup appnavbar
-import {
-  checkSubscription,
-  subscribeNotifications
-} from "../registerServiceWorker";
-import { RequestHandler } from "../javascript/requests";
-
+// Setup appnavdrawer
 export default {
   name: "appnavdrawer",
   props: ["global"],
@@ -51,11 +45,6 @@ export default {
       isPushNotificationsActive: this.$store.getters.isPushNotificationsActive,
       title: process.env.VUE_APP_TITLE
     };
-  },
-  async beforeMount() {
-    if (this.isPushNotificationsActive) {
-      this.isSubscribed = await checkSubscription();
-    }
   },
   methods: {
     logout: function() {
@@ -73,23 +62,6 @@ export default {
     },
     isAuthenticated: function() {
       return this.$store.getters.isAuthenticated;
-    },
-    isDragos: function() {
-      return this.user.name === "admin";
-    },
-    subscribeForCanISmoke: async function() {
-      this.hideDrawer();
-      let subscription = await subscribeNotifications();
-      let data = subscription.toJSON();
-      await RequestHandler.doPostRequest("/notification/add", {
-        endpointUrl: data.endpoint,
-        p256dh: data.keys.p256dh,
-        auth: data.keys.auth
-      }).then(() => {
-        // eslint-disable-next-line no-console
-        console.log("Success");
-      });
-      this.$forceUpdate();
     }
   }
 };

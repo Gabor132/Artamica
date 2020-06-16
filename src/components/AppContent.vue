@@ -23,8 +23,4 @@ export default {
 <style lang="scss">
 //
 // Local style
-#appcontent {
-  display: block;
-  height: 100%;
-}
 </style>
