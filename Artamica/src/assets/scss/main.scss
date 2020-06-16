@@ -1,0 +1,144 @@
+
+
+@import "@/assets/scss/_variables.scss";
+
+html{
+  height:100%;
+}
+
+body{
+  background-color: $color-background;
+  color: $color-paragraphs;
+  height: 100%;
+  margin: 0;
+}
+
+
+#appbottombar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+.md-app-content{
+  padding-left: 0;
+  padding-right: 0;
+  min-height: 100vh;
+}
+
+.md-card{
+  margin-bottom: 1vh;
+}
+
+@media (min-width: 470px) {
+  .md-card-secondary {
+    width: 320px;
+    margin: 4px;
+    display: inline-block;
+    vertical-align: top;
+  }
+}
+
+@media (max-width: 478px) {
+  .md-card-secondary {
+    width: auto;
+    margin: 4px;
+    display: block;
+    vertical-align: top;
+  }
+}
+
+.chart-container{
+  display: flex;
+  flex-direction: row;
+}
+
+.md-card-chart-small{
+  width: 30%;
+  margin: 2px 4px !important;
+  display: inline-block;
+  flex-grow: 1;
+  vertical-align: top;
+}
+
+.md-card-chart-medium{
+  width: 32vw;
+  margin: 2px 4px !important;
+  display: inline-block;
+  flex-grow: 2;
+  vertical-align: top;
+}
+
+.md-card-chart-big{
+  width: 100%;
+  margin-left: 4px !important;
+  margin-right: 4px !important;
+  flex-grow: 3;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.md-card-actions > .md-button{
+  margin-right: 1vw;
+}
+
+
+.writeMessage {
+  display: flex;
+}
+.appmessagecard{
+  width:max-content;
+}
+
+.appmessage{
+  float: right;
+}
+
+.hisappmessage{
+  float: left;
+}
+
+.appmessagecardcontainer{
+  display: flow-root;
+}
+
+.appchat{
+  display:block;
+}
+
+
+#appnavbar {
+  align-items: center;
+}
+.badge {
+  width: 19px;
+  height: 19px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 2px;
+  right: 34px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 100%;
+  color: #754368;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: -0.05em;
+  font-family: "Roboto Mono", monospace;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Courgette&display=swap");
+
+.titleimage{
+  width:21vh;
+  height:auto;
+}
+.drawerTitleImage{
+  width:21vh;
+  height:auto;
+}
