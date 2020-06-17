@@ -30,7 +30,6 @@ body{
   }
 }
 
-
 #appbottombar {
   position: absolute;
   bottom: 0;
@@ -54,8 +53,8 @@ body{
 }
 
 .md-card-media .md-icon{
-  height: 200px;
-  width: 200px;
+  height: 300px;
+  width: 300px;
 }
 
 .md-card{
@@ -129,5 +128,9 @@ body{
 }
 
 .md-card-content{
+  white-space: normal;
+}
+
+.md-card-header-text{
   white-space: normal;
 }
