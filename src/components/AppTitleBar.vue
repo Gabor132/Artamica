@@ -3,7 +3,7 @@
     <md-button class="md-icon-button" @click="showMenu">
       <md-icon class="md-icon">menu</md-icon>
     </md-button>
-    <span class="md-title titlefont" to="/">{{title}}</span>
+    <span class="md-title titlefont md-large" to="/">{{title}}</span>
     <div class="md-toolbar-section-end">
       <md-button class="md-icon-button" @click="goToProfile">
         <md-avatar v-if="user !== null" class="md-avatar-icon">

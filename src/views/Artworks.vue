@@ -1,6 +1,6 @@
 <template>
   <div class="artworks">
-    <div v-if="artworks.length == 0">
+    <div v-if="artworks.length === 0">
       <md-empty-state
               md-icon="portrait"
               md-label="Artworks"
@@ -8,34 +8,13 @@
       >
       </md-empty-state>
     </div>
-    <div v-else v-for="art in artworks" v-bind:key="art.id">
-      <md-card>
-        <md-card-media>
-          <img src="/assets/examples/monalisa.jpg" alt="people">
-        </md-card-media>
-        <md-card-header>
-          <div class="md-title">{{art.name}}</div>
-          <div class="md-subhead">by {{art.artist}}</div>
-        </md-card-header>
-        <md-card-expand>
-          <md-card-actions md-alignment="space-between">
-            <div>
-              <md-button>Action</md-button>
-              <md-button>Action</md-button>
-            </div>
-            <md-card-expand-trigger>
-              <md-button class="md-icon-button">
-                <md-icon>keyboard_arrow_down</md-icon>
-              </md-button>
-            </md-card-expand-trigger>
-          </md-card-actions>
-          <md-card-expand-content>
-            <md-card-content>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio itaque ea, nostrum odio. Dolores, sed accusantium quasi non, voluptas eius illo quas, saepe voluptate pariatur in deleniti minus sint. Excepturi.
-            </md-card-content>
-          </md-card-expand-content>
-        </md-card-expand>
-      </md-card>
+    <div v-else>
+      <div v-if="! this.$isMobile()">
+        <artworkcard v-for="art in artworks" v-bind:key="art.id" v-bind:art="art" v-on:liked-artwork="likedArtwork"/>
+      </div>
+      <div class="scrolling-wrapper" v-else>
+        <artworkcard v-for="art in artworks" v-bind:key="art.id" v-bind:art="art" v-on:liked-artwork="likedArtwork"/>
+      </div>
     </div>
   </div>
 </template>
@@ -44,10 +23,12 @@
 //
 // Imports
 //
+import artworkcard from "../components/cards/ArtworkCard.vue"
 // Local Setup
 export default {
   name: "artworks",
   components: {
+    artworkcard:artworkcard
   },
 
   data: function() {
@@ -56,31 +37,77 @@ export default {
         {
           id: 0,
           name: "Banana",
-          type: "0",
-          artist: "Magdalena"
+          type: "help",
+          artist: "Johnny",
+          description: "Best measuring unit that we have available, get used to using it",
+          imageUrl: "../../assets/examples/banana.jpg",
+          liked: false
         },
         {
           id: 1,
           name: "Monalisa",
-          type: "1",
-          artist: "Magdalena"
+          type: "brush",
+          artist: "Vasile",
+          description: "Definitely not stolen",
+          imageUrl: "../../assets/examples/monalisa.jpg",
+          liked: true
         },
         {
           id: 2,
           name: "Fancy Chairs",
-          type: "2",
-          artist: "Petrovik"
+          type: "weekend",
+          artist: "Petrovik",
+          description: "Hello, have a seat",
+          imageUrl: "../../assets/examples/chair.jpg",
+          liked: false
         },
-        /*{
+        {
+          id: 5,
+          name: "Fun Selfies",
+          type: "camera_alt",
+          artist: "Johnny",
+          description: "Most awkward selfies, uga",
+          imageUrl: "../../assets/examples/selfie.jpg",
+          liked: true
+        },
+        {
           id: 3,
           name: "One Stick to Rule Them All",
-          type: "3",
-          artist: "Casandra"
-        },*/
+          type: "help",
+          artist: "Casandra",
+          description: "My dad gave me this for my birthday",
+          imageUrl: "../../assets/examples/stick.jpg",
+          liked: false
+        },
+        {
+          id: 4,
+          name: "Complete works of Agatha Cristy",
+          type: "description",
+          artist: "A.Cristy",
+          description: "Die Krimi fur dir!",
+          imageUrl: "../../assets/examples/book.jpg",
+          liked: false
+        },
+        {
+          id: 5,
+          name: "Movie Acting",
+          type: "videocam",
+          artist: "Mr. Fancy Move Actor",
+          description: "I do my own stunts",
+          imageUrl: "../../assets/examples/actor_movie.jpg",
+          liked: false
+        }
       ]
     }
   },
   methods: {
+    likedArtwork: function(value){
+      for(var art in this.artworks){
+        if(art.id === value){
+          art.liked = !art.liked;
+        }
+      }
+    }
   }
 };
 </script>

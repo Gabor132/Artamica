@@ -13,6 +13,23 @@ body{
   margin: 0;
 }
 
+.scrolling-wrapper {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+  .md-card {
+    display: inline-block;
+  }
+}
+.scrolling-wrapper{
+  -webkit-overflow-scrolling: touch;
+}
+.scrolling-wrapper {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 
 #appbottombar {
   position: absolute;
@@ -21,6 +38,7 @@ body{
   right: 0;
   align-items: flex-end;
   overflow: hidden;
+  z-index: 100;
 }
 
 .md-app-content{
@@ -30,8 +48,21 @@ body{
   min-height: 93vh;
 }
 
+.md-card-media img{
+  height: 200px;
+  width: 200px;
+}
+
+.md-card-media .md-icon{
+  height: 200px;
+  width: 200px;
+}
+
 .md-card{
   margin-bottom: 1vh;
+  width: 320px;
+  display: inline-block;
+  vertical-align: top;
 }
 
 .writeMessage {
@@ -90,4 +121,13 @@ body{
 .drawerTitleImage{
   width:21vh;
   height:auto;
+}
+
+.titlefont{
+  font-family: 'Finger Paint', cursive;
+  font-size: x-large;
+}
+
+.md-card-content{
+  white-space: normal;
 }
