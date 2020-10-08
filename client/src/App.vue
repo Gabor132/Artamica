@@ -2,7 +2,7 @@
 <template>
   <md-app class="md-waterfall">
     <md-app-toolbar class="md-small md-primary md-dense">
-      <apptitlebar :user="user" />
+      <apptitlebar />
       <appnavbar v-if="! this.$isMobile()"/>
     </md-app-toolbar>
     <md-app-drawer :md-active="this.$store.getters.showMenu" md-swipeable>
@@ -22,7 +22,6 @@ import appcontent from "./components/AppContent.vue";
 import appnavbar from "./components/AppNavBar.vue";
 import apptitlebar from "./components/AppTitleBar.vue";
 import appnavdrawer from "./components/AppNavDrawer.vue";
-import Store from "./store";
 
 //
 // Setup of #app
@@ -39,9 +38,6 @@ export default {
       }
     ]
   },
-  data: () => ({
-    user: Store.state.user
-  }),
   methods: {
     showMenu() {
       this.$store.dispatch("TOGGLE_MENU");
@@ -58,8 +54,8 @@ export default {
 ----------------------------Style----------------------------------------------
 <style lang="scss">
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic|Material+Icons");
-@import "src/assets/scss/_theme.scss";
-@import "src/assets/scss/main.scss";
+@import "assets/scss/theme";
+@import "assets/scss/main";
 #app {
   font-family: "Roboto", "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

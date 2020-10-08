@@ -10,6 +10,11 @@ import "./registerServiceWorker";
 import axios from "axios";
 import VueMobileDetection from "vue-mobile-detection";
 
+// Import the Auth0 configuration
+import { domain, clientId } from "../auth_config.json";
+// Import the plugin here
+import { Auth0Plugin } from "./auth/auth";
+
 const token = sessionStorage.getItem("access-token");
 if (token) {
   axios.defaults.headers.common["Authorization"] = "Bearer " + token;
@@ -20,6 +25,15 @@ Vue.config.productionTip = false;
 Vue.use(BootstrapVue);
 Vue.use(VueMaterial);
 Vue.use(VueMobileDetection);
+Vue.use(Auth0Plugin, {
+  domain,
+  clientId,
+  onRedirectCallback: appState => {
+    router.push(
+        appState && appState.targetUrl ? appState.targetUrl : window.location.pathname
+    );
+  }
+});
 
 new Vue({
   router,

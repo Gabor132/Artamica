@@ -1,22 +1,13 @@
 <template>
   <div class="profile">
+    <md-card class="page-wide-card">
     <md-card-header>
       <md-card-header-text>
         <h3 class="md-title">{{ user.name }}</h3>
-        <span> profile page </span>
       </md-card-header-text>
       <md-card-media class="md-medium">
-        <md-icon class="md-size-5x">person</md-icon>
+          <img v-bind:src="user.picture" alt="person">
       </md-card-media>
-    </md-card-header>
-    <md-divider />
-    <md-card-actions>
-      <md-button @click="logout">Logout</md-button>
-    </md-card-actions>
-    <md-card-header>
-      <md-card-header-text>
-        <h3 class="md-title">About</h3>
-      </md-card-header-text>
     </md-card-header>
     <md-divider />
     <md-card-content>
@@ -25,6 +16,10 @@
         <p>Email: {{ user.email }}</p>
       </md-card-area>
     </md-card-content>
+    <md-card-actions>
+      <md-button @click="logout">Logout</md-button>
+    </md-card-actions>
+    </md-card>
   </div>
 </template>
 --------------------------------------------------------------------------------
@@ -44,8 +39,8 @@ export default {
   },
   methods: {
     logout: function() {
-      this.$store.dispatch("AUTH_LOGOUT").then(() => {
-        this.$router.push("/login");
+      this.$auth.logout({
+        returnTo : window.location.origin
       });
     }
   }

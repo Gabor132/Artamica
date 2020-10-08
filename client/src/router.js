@@ -1,23 +1,8 @@
 import Vue from "vue";
 import Router from "vue-router";
-import Store from "./store";
+import { authGuard } from "./auth/authGuard";
 
 Vue.use(Router);
-
-const ifNotAuthenticated = function(to, from, next) {
-  if (!Store.getters.isAuthenticated) {
-    next();
-    return;
-  }
-  next("/index");
-};
-const ifAuthenticated = function(to, from, next) {
-  if (Store.getters.isAuthenticated) {
-    next();
-    return;
-  }
-  next("/login");
-};
 
 export default new Router({
   //mode: "history",
@@ -33,19 +18,17 @@ export default new Router({
       path: "/login",
       name: "login",
       component: () => import("./views/Login.vue"),
-      beforeEnter: ifNotAuthenticated
     },
     {
       path: "/register",
       name: "register",
       component: () => import("./views/Register.vue"),
-      beforeEnter: ifNotAuthenticated
     },
     {
       path:"/index",
       name: "index",
       component: () => import("./views/Index.vue"),
-      beforeEnter: ifAuthenticated
+      beforeEnter: authGuard
     },
     {
       path: "/about",
@@ -56,31 +39,31 @@ export default new Router({
       path: "/profile",
       name: "profile",
       component: () => import("./views/Profile.vue"),
-      beforeEnter: ifAuthenticated
+      beforeEnter: authGuard
     },
     {
       path: "/artists",
       name: "artists",
       component: () => import("./views/Artists.vue"),
-      beforeEnter: ifAuthenticated
+      beforeEnter: authGuard
     },
     {
       path: "/artworks",
       name: "artworks",
       component: () => import("./views/Artworks.vue"),
-      beforeEnter: ifAuthenticated
+      beforeEnter: authGuard
     },
     {
       path: "/messages",
       name: "messages",
       component: () => import("./views/Messages.vue"),
-      beforeEnter: ifAuthenticated
+      beforeEnter: authGuard
     },
     {
       path: "/devtools",
       name: "devtools",
       component: () => import("./views/dev/DevTools.vue"),
-      beforeEnter: ifAuthenticated
+      beforeEnter: authGuard
     }
   ]
 });

@@ -40,7 +40,7 @@ export default {
   props: ["global"],
   data: function() {
     return {
-      user: this.$store.getters.getUser,
+      user: this.$auth.user,
       isSubscribed: false,
       isPushNotificationsActive: this.$store.getters.isPushNotificationsActive,
       title: process.env.VUE_APP_TITLE
@@ -48,9 +48,8 @@ export default {
   },
   methods: {
     logout: function() {
-      this.$store.dispatch("AUTH_LOGOUT").then(() => {
-        this.hideDrawer();
-        this.$router.go();
+      this.$auth.logout({
+        returnTo : window.location.origin
       });
     },
     hideDrawer: function() {

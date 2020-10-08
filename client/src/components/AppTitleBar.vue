@@ -4,12 +4,11 @@
       <md-icon class="md-icon">menu</md-icon>
     </md-button>
     <span class="md-title titlefont md-large" to="/">{{title}}</span>
-    <div class="md-toolbar-section-end">
+    <div class="md-toolbar-section-end" v-if="user !== null">
       <md-button class="md-icon-button" @click="goToProfile">
         <md-avatar v-if="user !== null" class="md-avatar-icon">
-          {{ user.name.charAt(0) }}</md-avatar
-        >
-        <md-icon v-else>person</md-icon>
+          <img v-bind:src="user.picture" alt="person">
+        </md-avatar>
       </md-button>
     </div>
   </div>
